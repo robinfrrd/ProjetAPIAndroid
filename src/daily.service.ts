@@ -28,14 +28,24 @@ export class DailyService {
         const year2 = parseInt(date2.substring(0,4))
         const month2 = parseInt(date2.substring(4,6))
         const day2 = parseInt(date2.substring(6,8))
-        if(year>=year1 && year<=year2) {
-          if(month>=month1 && month<=month2) {
-            if(day>=day1 && day<=day2) {
-              return 1;
+        if (year >= year1 && year <= year2) {
+          if (month == month1 && month == month2) {
+            if (day >= day1 && day <= day2) {
+              return true
             }
           }
+          if (month == month1 && month < month2) {
+            if (day >= day1)
+              return true
+          }
+          if (month > month1 && month==month2) {
+            if(day <= day2)
+              return true
+          }
+          if (month > month1 && month<month2) {
+            return true
+          }
         }
-        else return 0;
       }
     )
   }
